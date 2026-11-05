@@ -10,7 +10,7 @@
 
 - **Attributions that add up.** `base_value + sum(shap_values)` is the probability the API served, by construction, and shap's independent KernelExplainer agrees within 0.44 point on 12 applicants (2026-11-04). Proof: `pytest tests/test_shap_explainer.py`.
 - **An audit that can say it does not know.** On the demo's 2,000 applicants equalized odds reads 0.077, CI 0.000–0.295: INCONCLUSIVE, because a model with no injected bias reads the same at this size. Proof: `pytest tests/test_equalized_odds_interval.py`.
-- **A constrained logistic model beat trees here.** On seeds 42, 7 and 123 it has the higher AUC, the lower Brier, under half the unjustified decision flips, and a largest one-point FICO jump of at most 6 points against 120 to 282. Proof: `pytest tests/test_served_model.py`.
+- **A constrained logistic model beat trees here.** On seeds 42, 7 and 123 it has the higher AUC, the lower Brier, under half the unjustified decision flips, and a largest one-point FICO jump of at most 6 points against 142 to 299. Proof: `pytest tests/test_served_model.py`.
 
 **Live demo:** https://creditlens-delta.vercel.app (the engine's recorded model running in your browser, on synthetic data; run the API for live Shapley attributions).
 
@@ -201,24 +201,30 @@ check.
 
 A tree is a step function, and on an additive logit it lumps an input's effect at
 its split points. Depth-1 XGBoost on the same features and data scores one applicant
-421 / Denied at FICO 487 and 617 / Approved at 488, and 421 at every FICO from 350 to
+414 / Denied at FICO 487 and 597 / Review at 488, and 414 at every FICO from 350 to
 487; a strong profile at FICO 350 reads P(default) 0.24 where the label's own
 probability is about 0.60. On the served model a strong profile at FICO 350 reads P(default) 0.56 against the label's 0.60, and that
 applicant moves a few points per FICO point all the way down.
 `XGBoostScorer` stays in the library and tested, so the comparison keeps
-reproducing (`tests/test_served_model.py`; measured 2026-11-04, the API's training
-configuration, 2,000 held-out applicants, the same features):
+reproducing (`tests/test_served_model.py`; measured 2026-11-05 on Linux x86-64, the
+platform CI runs, with the API's training configuration, 2,000 held-out applicants,
+the same features):
 
 | Seed | Model | AUC | Brier | Unjustified flips | Largest one-point FICO jump |
 |---|---|---:|---:|---:|---:|
 | 42 | logistic | 0.8564 | 0.0917 | 26 of 782 (3.3%) | 5 |
-| 42 | XGBoost stumps | 0.8514 | 0.0926 | 74 of 656 (11.3%) | 197 |
+| 42 | XGBoost stumps | 0.8526 | 0.0926 | 75 of 654 (11.5%) | 184 |
 | 7 | logistic | 0.8655 | 0.0893 | 42 of 860 (4.9%) | 6 |
-| 7 | XGBoost stumps | 0.8579 | 0.0913 | 85 of 710 (12.0%) | 282 |
+| 7 | XGBoost stumps | 0.8579 | 0.0910 | 85 of 639 (13.3%) | 299 |
 | 123 | logistic | 0.8731 | 0.0888 | 28 of 787 (3.6%) | 5 |
-| 123 | XGBoost stumps | 0.8611 | 0.0909 | 68 of 788 (8.6%) | 120 |
+| 123 | XGBoost stumps | 0.8611 | 0.0910 | 65 of 786 (8.3%) | 142 |
 
 Unjustified flips are the total over the [proportionality table](#model-behaviour).
+The logistic rows are the same on macOS arm64. The XGBoost rows are not, because the
+same pinned version trains slightly differently there: seed 42 reads AUC 0.8514, 74 of
+656 flips and a 197-point jump, and the applicant above goes from 421 / Denied to
+617 / Approved. Logistic leads on every measure on both platforms, and the test
+retrains both models to check that wherever it runs.
 The one thing trees gave for free, a guaranteed direction, is kept by the weight
 bounds: where the data would give an input the wrong sign, its weight is exactly 0.
 
@@ -825,7 +831,7 @@ pytest tests/ -v --cov=creditlens
 # tests/test_scorer.py::TestXGBoostScorer::test_auc_above_random PASSED
 # tests/test_fairness.py::TestFairnessAuditor::test_biased_model_fails_checks PASSED
 # tests/test_features.py::TestFeatureEngineer::test_derived_features_created PASSED
-# 525 passed, 0 skipped        # re-run 2026-11-04 on CPython 3.12.5
+# 526 passed, 0 skipped        # re-run 2026-11-05 on CPython 3.12.5
 ```
 
 Or run the whole suite plainly:

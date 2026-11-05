@@ -1,8 +1,8 @@
 """The served model has no artificial steps.
 
 Depth-1 trees are a step function on an additive logit: they lump an input's whole
-effect at split points. On these features and data they score the applicant below
-421 / Denied at FICO 487 and 617 / Approved at 488, and exactly 421 from FICO 350 to
+effect at split points. On these features and data, on Linux x86-64, they score the
+applicant below 414 / Denied at FICO 487 and 597 / Review at 488, and exactly 414 from FICO 350 to
 487, while a strong profile at FICO 350 reads P(default) 0.24 where the label's own
 probability is about 0.60. The API serves a sign-constrained
 logistic regression, the correct form for this generator's logistic label. These
@@ -12,6 +12,7 @@ compare the response with the label's.
 
 from __future__ import annotations
 
+import platform
 import re
 from pathlib import Path
 
@@ -185,13 +186,13 @@ def _readme() -> str:
 
 class TestNoArtificialSteps:
     def test_one_fico_point_does_not_cross_from_denied_to_approved(self, client):
-        """Depth-1 trees score 487 at 421 / Denied and 488 at 617 / Approved."""
+        """Depth-1 trees score 487 at 414 / Denied and 488 at 597 / Review."""
         at = {f: client.post("/score", json={**STEP_APPLICANT, "fico_score": f}).json()
               for f in (487, 488)}
         assert abs(at[488]["credit_score"] - at[487]["credit_score"]) <= FICO_BOUND, at
 
     def test_fico_has_no_plateau(self, client):
-        """Depth-1 trees score 350 to 487 all at 421, so 137 points of FICO buy nothing.
+        """Depth-1 trees score 350 to 487 all at 414, so 137 points of FICO buy nothing.
         The served score moves with every point (rounding aside) all the way down."""
         scores = [client.post("/score", json={**STEP_APPLICANT, "fico_score": f}).json()["credit_score"]
                   for f in range(350, 488)]
@@ -268,6 +269,12 @@ class TestEverySmallStepIsBounded:
 
 STUMPS = dict(n_estimators=400, max_depth=1, learning_rate=0.1, calibrate=False, scale_pos_weight=1.0)
 
+# XGBoost at the same pinned version trains slightly differently across platforms, so
+# its published figures are exact only where they were measured.
+PLATFORM = (platform.system(), platform.machine())
+CI_PLATFORM = ("Linux", "x86_64")
+MAC_ARM = ("Darwin", "arm64")
+
 
 def comparison_row(seed: int, make) -> tuple[float, float, int, int, int]:
     from sklearn.metrics import brier_score_loss, roc_auc_score
@@ -300,17 +307,52 @@ def test_the_readme_publishes_the_comparison_with_stumps():
         r"^\| (\d+) \| (logistic|XGBoost stumps) \| ([\d.]+) \| ([\d.]+) \| (\d+) of (\d+) \(([\d.]+)%\) \| (\d+) \|$",
         README.read_text(encoding="utf-8"), re.M)
     assert len(published) == 6
+    by_seed: dict[str, dict] = {}
     for seed, name, auc, brier, unjustified, flips, pct, jump in published:
         make = LogisticScorer if name == "logistic" else (lambda: XGBoostScorer(**STUMPS))
         row = comparison_row(int(seed), make)
-        assert row == (float(auc), float(brier), int(unjustified), int(flips), int(jump)), (seed, name, row)
+        if name == "logistic" or PLATFORM == CI_PLATFORM:
+            assert row == (float(auc), float(brier), int(unjustified), int(flips), int(jump)), (seed, name, row)
         assert f"{int(unjustified) / int(flips):.1%}" == f"{pct}%"
-    by_seed: dict[str, dict] = {}
-    for seed, name, auc, brier, unjustified, flips, pct, jump in published:
-        by_seed.setdefault(seed, {})[name] = (float(auc), float(brier), float(pct), int(jump))
+        by_seed.setdefault(seed, {})[name] = row
+    # The conclusion is checked on what was just trained, so it holds on any platform.
     for seed, rows in by_seed.items():
         lr, stumps = rows["logistic"], rows["XGBoost stumps"]
-        assert lr[0] > stumps[0] and lr[1] < stumps[1] and lr[2] < stumps[2] and lr[3] < stumps[3], seed
+        assert lr[0] > stumps[0] and lr[1] < stumps[1], (seed, lr, stumps)
+        assert lr[2] / lr[3] < stumps[2] / stumps[3] / 2 and lr[4] < stumps[4], (seed, lr, stumps)
+    if PLATFORM == MAC_ARM:
+        assert by_seed["42"]["XGBoost stumps"] == (0.8514, 0.0926, 74, 656, 197)
+        assert "seed 42 reads AUC 0.8514, 74 of 656 flips and a 197-point jump" in _readme()
+    jumps = [r["XGBoost stumps"][4] for r in by_seed.values()]
+    if PLATFORM == CI_PLATFORM:
+        assert f"at most 6 points against {min(jumps)} to {max(jumps)}." in _readme()
+
+
+def test_the_readme_quotes_what_the_stumps_do_to_one_applicant():
+    from creditlens.decision import score_to_decision
+    from creditlens.models.scorer import XGBoostScorer
+
+    df = generate_credit_dataset(DatasetConfig(n_samples=api.DEFAULT_TRAIN_SAMPLES, seed=api.DEFAULT_SEED))
+    train, _ = train_test_split(df, test_size=0.20, seed=api.DEFAULT_SEED)
+    engineer = FeatureEngineer(scale=True)
+    X, y = engineer.fit_transform(train)
+    model = XGBoostScorer(**STUMPS).fit(X, y)
+
+    def probability(applicant):
+        return model.predict_proba(engineer.transform(pd.DataFrame([applicant]))[0])[:, 1]
+
+    def score(fico):
+        return int(probability_to_score(probability({**STEP_APPLICANT, "fico_score": fico}))[0])
+
+    prose = _readme()
+    below, above = score(487), score(488)
+    assert score(350) == below
+    assert f"reads P(default) {float(probability(STRONG_AT_350)[0]):.2f} where the label's own" in prose
+    if PLATFORM == CI_PLATFORM:
+        assert (f"{below} / {score_to_decision(below)} at FICO 487 and {above} / {score_to_decision(above)} at 488, "
+                f"and {below} at every FICO from 350 to 487") in prose
+    elif PLATFORM == MAC_ARM:
+        assert f"{below} / {score_to_decision(below)} to {above} / {score_to_decision(above)}" in prose
 
 
 def test_a_step_function_is_what_the_stumps_still_do():

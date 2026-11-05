@@ -13,8 +13,8 @@ setup(
     packages=find_packages(exclude=["tests*"]),
     # >=3.12: forced by the exact pins below — shap==0.52.0 requires >=3.12
     # (pandas/numpy/scipy/scikit-learn require >=3.11). The documented demo numbers
-    # reproduce on CPython 3.12.5; suite re-run 2026-11-04 on the same
-    # interpreter: 525 passed, 0 skipped.
+    # reproduce on CPython 3.12.5; suite re-run 2026-11-05 on the same
+    # interpreter: 526 passed, 0 skipped.
     python_requires=">=3.12",
     # EXACT pins, kept in lockstep with requirements.txt (see the rationale
     # there): the seeded pipeline's documented numbers reproduce only under a

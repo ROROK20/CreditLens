@@ -151,7 +151,7 @@ def test_the_architecture_doc_counts_what_the_code_has():
 def test_stale_wording_stays_gone():
     app = (ROOT / "creditlens" / "api" / "app.py").read_text(encoding="utf-8")
     assert "Three joint" not in app and "Five joint" in app
-    assert "410 / Denied" not in app and "421 / Denied" in app
+    assert "410 / Denied" not in app and "421 / Denied" not in app and "414 / Denied" in app
     assert "badge/tests-" not in (ROOT / "README.md").read_text(encoding="utf-8")
 
 

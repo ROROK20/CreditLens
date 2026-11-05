@@ -47,7 +47,7 @@ pytest tests/
 pytest tests/ --cov=creditlens --cov-report=term-missing -v
 ```
 
-The full suite (525 tests as of 2026-11-04) must pass before a change can be merged.
+The full suite (526 tests as of 2026-11-05) must pass before a change can be merged.
 A change that moves the served model also needs `make snapshot` (the recording the
 no-backend page runs) and `make capture` (both published images); the tests say so when
 either has gone stale.

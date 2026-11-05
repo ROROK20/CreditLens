@@ -721,8 +721,8 @@ def train_model(n_samples: int = DEFAULT_TRAIN_SAMPLES, seed: int = DEFAULT_SEED
 
     # Sign-constrained logistic regression, the correctly specified form for the
     # synthetic label (a logistic model additive in these features). Depth-1 XGBoost
-    # is a step function that lumps FICO's whole effect at split points (FICO 487 scores
-    # 421 / Denied, 488 scores 617 / Approved, and 350 scores the same as 487).
+    # is a step function that lumps FICO's whole effect at split points (on Linux x86-64,
+    # FICO 487 scores 414 / Denied, 488 scores 597 / Review, and 350 scores the same as 487).
     # README "Why logistic regression" compares them.
     model = LogisticScorer().fit(X_train, y_train)
 

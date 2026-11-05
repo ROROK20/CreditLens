@@ -1,8 +1,8 @@
 # CreditLens Python dependencies — EXACT pins.
 #
 # These are the versions the suite and the documented demo numbers run on;
-# suite re-run 2026-11-04 on this pinned set:
-# 525 passed, 0 skipped. Exact pins are load-bearing here,
+# suite re-run 2026-11-05 on this pinned set:
+# 526 passed, 0 skipped. Exact pins are load-bearing here,
 # not hygiene: the pipeline is seeded end-to-end (seed=42), so the documented
 # values (default applicant -> 993, disparate_impact_ratio 0.9798, re-derived
 # 2026-11-04) reproduce
