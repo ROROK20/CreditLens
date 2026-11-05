@@ -1,0 +1,21 @@
+# Render.com blueprint for the CreditLens API.
+#
+# Deploys the FastAPI backend (logistic scorer + SHAP) as a Docker web service. The app
+# trains a small synthetic model on startup, so no build-time model artifact or
+# secret is required. Point the frontend's NEXT_PUBLIC_API_URL at the resulting
+# service URL (e.g. https://creditlens-api.onrender.com).
+#
+# Memory: the first GET /fairness/report, which the web page calls on load, peaks at
+# about 306 MB in this image (cgroup memory.peak, aarch64, 2026-11-04; README "Deploy").
+# check your plan's memory: below that peak the process can be killed on the first page load.
+services:
+  - type: web
+    name: creditlens-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: false
+    # No custom env vars: Render injects $PORT for web services, and the
+    # Dockerfile CMD already binds uvicorn to it (`--port ${PORT:-8002}`). The
+    # previous CREDITLENS_PORT entry was dead — nothing in the image reads it.

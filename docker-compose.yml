@@ -1,0 +1,37 @@
+# CreditLens — full-stack one-command demo.
+#
+#   docker compose up --build
+#
+# Brings up:
+#   - backend  : FastAPI + logistic scorer + SHAP engine on http://localhost:8002
+#                (trains a small synthetic model on startup, ready to score)
+#   - frontend : Next.js web demo on http://localhost:3003, built against the
+#                backend via the NEXT_PUBLIC_API_URL build arg. If the backend is
+#                down the UI falls back to its in-browser demo model automatically.
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0) if urllib.request.urlopen('http://localhost:8002/health').status==200 else sys.exit(1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # Inlined into the client bundle at build time. The browser reaches the
+        # backend on the host's published port, so localhost is correct here.
+        NEXT_PUBLIC_API_URL: http://localhost:8002
+    ports:
+      - "3003:3003"
+    depends_on:
+      - backend

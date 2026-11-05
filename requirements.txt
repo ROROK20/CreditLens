@@ -1,0 +1,32 @@
+# CreditLens Python dependencies — EXACT pins.
+#
+# These are the versions the suite and the documented demo numbers run on;
+# suite re-run 2026-11-04 on this pinned set:
+# 525 passed, 0 skipped. Exact pins are load-bearing here,
+# not hygiene: the pipeline is seeded end-to-end (seed=42), so the documented
+# values (default applicant -> 993, disparate_impact_ratio 0.9798, re-derived
+# 2026-11-04) reproduce
+# bit-for-bit under a FIXED dependency set, and they can move across library
+# versions (the served logistic model is fitted by scipy). Loosen these and
+# the README / e2e/smoke.mjs numbers may stop reproducing.
+#
+# Re-pin procedure: bump, run `pytest tests/`, run `pip-audit`, re-verify the
+# documented numbers, and update them WITH A DATE in README.md + e2e/smoke.mjs
+# in the same commit (a number and its date are one claim).
+
+pandas==3.0.3
+numpy==2.4.6
+scipy==1.17.1          # direct import: creditlens/models/scorer.py (L-BFGS-B, ks_2samp)
+scikit-learn==1.8.0
+xgboost==3.2.0
+shap==0.52.0
+joblib==1.5.3
+fastapi==0.136.3
+uvicorn==0.49.0
+pydantic==2.13.4
+python-dotenv==1.2.2
+
+# dev / test
+pytest==9.0.3
+pytest-cov==7.1.0
+httpx==0.28.1

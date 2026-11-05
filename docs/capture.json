@@ -1,0 +1,28 @@
+{
+  "captured": "2026-11-04",
+  "capture_id": "f787cd7aef090a8f",
+  "screenshot": {
+    "path": "docs/screenshot.png",
+    "sha256": "d91d01c12652c50fa1d0e78f00001925df508f778fe386214e1f0c9d17712776",
+    "state": "live engine",
+    "shows": {
+      "credit_score": 993,
+      "decision": "APPROVED",
+      "default_probability": "0.7%",
+      "risk_band": "Very low",
+      "fairness_verdict": "INCONCLUSIVE"
+    }
+  },
+  "og": {
+    "path": "frontend/public/og.png",
+    "sha256": "282e702ca6ca94d66b1d9dada90eb55c46e8968eb24a1c5fbf91a5902f1a1a29",
+    "state": "no backend",
+    "shows": {
+      "credit_score": 993,
+      "decision": "APPROVED",
+      "default_probability": "0.7%",
+      "risk_band": "Very low",
+      "fairness_verdict": "INCONCLUSIVE"
+    }
+  }
+}

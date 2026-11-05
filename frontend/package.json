@@ -1,0 +1,39 @@
+{
+  "name": "creditlens-frontend",
+  "version": "0.1.0",
+  "description": "An explainable credit-scoring reference: every decision has an attribution that sums exactly to the served probability, and the fairness audit reports intervals and says INCONCLUSIVE when it should.",
+  "author": "Rohan Khiani",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3003",
+    "build": "next build",
+    "postbuild": "node scripts/check-static.mjs",
+    "start": "next start -p 3003",
+    "lint": "next lint",
+    "test": "node --test lib/apiUrl.test.mjs lib/siteUrl.test.mjs lib/engineModel.test.mjs"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.408.0",
+    "next": "^15.5.28",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.5.28",
+    "playwright": "^1.61.1",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3"
+  },
+  "overrides": {
+    "next": {
+      "postcss": "$postcss"
+    }
+  }
+}

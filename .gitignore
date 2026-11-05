@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+node_modules/
+.next/
+*.log
+# NOTE: do NOT add a bare `models/` ignore here — it would also swallow the
+# `creditlens/models/` SOURCE package (scorer.py), which several modules import.
+# Trained-model artifacts are already ignored by the *.pkl / *.joblib rules.
+*.pkl
+*.joblib
+.DS_Store

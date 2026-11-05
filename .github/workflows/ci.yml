@@ -1,0 +1,50 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    name: Backend tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # 3.12 only: the exact dependency pins (requirements.txt / setup.py) are
+        # the set the documented demo numbers reproduce on, and shap==0.52.0
+        # requires Python >=3.12 (pandas/numpy/scipy/scikit-learn require >=3.11).
+        # A 3.10/3.11 leg cannot resolve them.
+        python-version: ["3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[xai,dev]"
+      - run: pytest tests/ --cov=creditlens --cov-report=xml -v
+      - uses: codecov/codecov-action@v4
+        with:
+          file: coverage.xml
+
+  frontend:
+    name: Frontend build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint --if-present
+      - name: Unit tests
+        run: npm test
+      - name: Build
+        run: npm run build

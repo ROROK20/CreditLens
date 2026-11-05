@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Questions & Discussions
+    url: https://github.com/ROROK20/CreditLens/discussions
+    about: Ask questions, share ideas, and discuss CreditLens with the community.
+  - name: 🔒 Report a security vulnerability
+    url: https://github.com/ROROK20/CreditLens/blob/main/SECURITY.md
+    about: Please report vulnerabilities privately via email — do not open a public issue.

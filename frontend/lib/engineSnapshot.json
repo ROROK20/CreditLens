@@ -1,0 +1,1278 @@
+{
+ "recorded": "2026-11-04",
+ "seed": 42,
+ "n_samples": 10000,
+ "model": {
+  "intercept": 13.170426190960276,
+  "weights": {
+   "fico_score": -0.019123486417516464,
+   "debt_to_income": 3.4219945458317067,
+   "credit_utilization": 2.570564209414284,
+   "num_delinquencies": 0.8509501661045921,
+   "months_since_delinquency": -0.056139851645661855,
+   "num_hard_inquiries": 0.17970850595477214,
+   "credit_age_months": -0.003504061387166373,
+   "nsf_count": 0.2962620432937553,
+   "overdraft_days": 0.03944204773424258,
+   "bill_payment_consistency": -1.31362762410024,
+   "paycheck_regularity": -0.7581069449340971,
+   "rent_payment_score": -1.201637581212151,
+   "utility_payment_score": -0.8886639173632558,
+   "monthly_net_cashflow": -0.0001967392767168557,
+   "savings_rate": -2.11019003674394,
+   "avg_account_balance": -0.11429785760463917,
+   "banking_tenure_months": -0.0033899984856497973,
+   "employment_years": -0.022716737359587274,
+   "monthly_payment_burden": 2.162574466568843
+  },
+  "feature_means": {
+   "fico_score": 676.8255,
+   "debt_to_income": 0.27805302252349284,
+   "credit_utilization": 0.334221196987592,
+   "num_delinquencies": 0.310125,
+   "months_since_delinquency": 23.29575,
+   "num_hard_inquiries": 1.005,
+   "credit_age_months": 59.34890658894467,
+   "nsf_count": 0.48975,
+   "overdraft_days": 1.967,
+   "bill_payment_consistency": 0.7171567898945141,
+   "paycheck_regularity": 0.665024662855032,
+   "rent_payment_score": 0.7491320034243456,
+   "utility_payment_score": 0.7128447796282724,
+   "monthly_net_cashflow": 1928.7347041181333,
+   "savings_rate": 0.11536583060651638,
+   "avg_account_balance": 2.2467342208947034,
+   "banking_tenure_months": 36.49465113918793,
+   "employment_years": 4.890735288720758,
+   "monthly_payment_burden": 0.09476476351019221
+  }
+ },
+ "rules": {
+  "inflow_to_monthly_income": [
+   0.78,
+   1.22
+  ],
+  "outflow_to_inflow": [
+   0.47,
+   0.98
+  ],
+  "balance_to_monthly_income": [
+   0.37,
+   3.13
+  ],
+  "net_cashflow": [
+   -1200,
+   25000
+  ],
+  "max_payment_burden": 2.8,
+  "fields": {
+   "annual_income": [
+    12000,
+    600000
+   ],
+   "loan_amount": [
+    830,
+    49000
+   ],
+   "loan_term_months": [
+    9,
+    63
+   ],
+   "debt_to_income": [
+    0.01,
+    0.74
+   ],
+   "employment_years": [
+    0,
+    21
+   ],
+   "fico_score": [
+    350,
+    850
+   ],
+   "credit_utilization": [
+    0,
+    0.98
+   ],
+   "num_delinquencies": [
+    0,
+    5
+   ],
+   "months_since_delinquency": [
+    0,
+    120
+   ],
+   "num_hard_inquiries": [
+    0,
+    8
+   ],
+   "credit_age_months": [
+    0,
+    378
+   ],
+   "monthly_inflow": [
+    820,
+    61000
+   ],
+   "monthly_outflow": [
+    410,
+    57000
+   ],
+   "paycheck_regularity": [
+    0,
+    1
+   ],
+   "bill_payment_consistency": [
+    0.05,
+    1
+   ],
+   "nsf_count": [
+    0,
+    6
+   ],
+   "overdraft_days": [
+    0,
+    10
+   ],
+   "rent_payment_score": [
+    0.13,
+    1
+   ],
+   "utility_payment_score": [
+    0.06,
+    1
+   ],
+   "banking_tenure_months": [
+    0,
+    252
+   ],
+   "avg_account_balance": [
+    480,
+    170000
+   ],
+   "savings_rate": [
+    0,
+    0.38
+   ]
+  },
+  "integer_fields": [
+   "loan_term_months",
+   "fico_score",
+   "num_delinquencies",
+   "months_since_delinquency",
+   "num_hard_inquiries",
+   "nsf_count",
+   "overdraft_days"
+  ],
+  "warning_band": {
+   "annual_income": [
+    15000,
+    480000
+   ],
+   "loan_amount": [
+    1700,
+    40000
+   ],
+   "loan_term_months": [
+    12,
+    60
+   ],
+   "debt_to_income": [
+    0.065,
+    0.644
+   ],
+   "employment_years": [
+    0.022,
+    20
+   ],
+   "fico_score": [
+    475,
+    850
+   ],
+   "credit_utilization": [
+    0.024,
+    0.813
+   ],
+   "num_delinquencies": [
+    0,
+    2
+   ],
+   "months_since_delinquency": [
+    0,
+    119
+   ],
+   "num_hard_inquiries": [
+    0,
+    4
+   ],
+   "credit_age_months": [
+    3,
+    310
+   ],
+   "monthly_inflow": [
+    1100,
+    38000
+   ],
+   "monthly_outflow": [
+    640,
+    29000
+   ],
+   "monthly_net_cashflow": [
+    97,
+    13000
+   ],
+   "paycheck_regularity": [
+    0.184,
+    0.978
+   ],
+   "bill_payment_consistency": [
+    0.25,
+    0.98
+   ],
+   "nsf_count": [
+    0,
+    3
+   ],
+   "overdraft_days": [
+    0,
+    6
+   ],
+   "rent_payment_score": [
+    0.3,
+    0.984
+   ],
+   "utility_payment_score": [
+    0.26,
+    0.981
+   ],
+   "banking_tenure_months": [
+    1,
+    190
+   ],
+   "avg_account_balance": [
+    870,
+    81000
+   ],
+   "savings_rate": [
+    0.008,
+    0.303
+   ]
+  },
+  "inflow_warning": [
+   0.802,
+   1.198
+  ],
+  "outflow_warning": [
+   0.503,
+   0.947
+  ],
+  "balance_warning": [
+   0.511,
+   2.988
+  ],
+  "payment_burden_warning": 0.88,
+  "cash_flow_edge": {
+   "inflow_to_monthly_income": 1.15,
+   "outflow_to_inflow": 0.55,
+   "balance_to_monthly_income": 2.74
+  }
+ },
+ "vectors": [
+  {
+   "name": "default",
+   "status": 200,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 6250,
+    "monthly_outflow": 4800,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8500,
+    "savings_rate": 0.1
+   },
+   "credit_score": 993,
+   "default_probability": 0.0069,
+   "decision": "Approved",
+   "warnings": []
+  },
+  {
+   "name": "strong",
+   "status": 200,
+   "applicant": {
+    "annual_income": 120000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.2,
+    "employment_years": 10,
+    "fico_score": 800,
+    "credit_utilization": 0.1,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 10000,
+    "monthly_outflow": 7000,
+    "paycheck_regularity": 0.98,
+    "bill_payment_consistency": 0.96,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.97,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 25000,
+    "savings_rate": 0.2
+   },
+   "credit_score": 1000,
+   "default_probability": 0.0002,
+   "decision": "Approved",
+   "warnings": [
+    "paycheck_regularity 0.98 is above 0.978, outside the central 99% of the training data: few training applicants look like this, so treat the score as less certain"
+   ]
+  },
+  {
+   "name": "median",
+   "status": 200,
+   "applicant": {
+    "annual_income": 59000,
+    "loan_amount": 10000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.26,
+    "employment_years": 3.5,
+    "fico_score": 677,
+    "credit_utilization": 0.31,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 36,
+    "monthly_inflow": 4900,
+    "monthly_outflow": 3500,
+    "paycheck_regularity": 0.68,
+    "bill_payment_consistency": 0.74,
+    "nsf_count": 0,
+    "overdraft_days": 2,
+    "rent_payment_score": 0.77,
+    "utility_payment_score": 0.73,
+    "banking_tenure_months": 24,
+    "avg_account_balance": 8000,
+    "savings_rate": 0.11
+   },
+   "credit_score": 959,
+   "default_probability": 0.0406,
+   "decision": "Approved",
+   "warnings": []
+  },
+  {
+   "name": "weak",
+   "status": 200,
+   "applicant": {
+    "annual_income": 35000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.55,
+    "employment_years": 1,
+    "fico_score": 580,
+    "credit_utilization": 0.75,
+    "num_delinquencies": 3,
+    "months_since_delinquency": 8,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 2900,
+    "monthly_outflow": 2700,
+    "paycheck_regularity": 0.6,
+    "bill_payment_consistency": 0.55,
+    "nsf_count": 4,
+    "overdraft_days": 10,
+    "rent_payment_score": 0.6,
+    "utility_payment_score": 0.5,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 1200,
+    "savings_rate": 0.01
+   },
+   "credit_score": 1,
+   "default_probability": 0.9991,
+   "decision": "Denied",
+   "warnings": [
+    "num_delinquencies 3 is above 2, outside the central 99% of the training data: few training applicants look like this, so treat the score as less certain",
+    "nsf_count 4 is above 3, outside the central 99% of the training data: few training applicants look like this, so treat the score as less certain",
+    "overdraft_days 10 is above 6, outside the central 99% of the training data: few training applicants look like this, so treat the score as less certain",
+    "avg_account_balance / (annual_income / 12) is 0.411, below 0.511, outside the central 99% of the training data: treat the score as less certain"
+   ]
+  },
+  {
+   "name": "audit 0",
+   "status": 200,
+   "applicant": {
+    "annual_income": 121535.06781986765,
+    "loan_amount": 3801.185356823921,
+    "loan_term_months": 60,
+    "debt_to_income": 0.5546202642374887,
+    "employment_years": 1.2603254095520544,
+    "fico_score": 666,
+    "credit_utilization": 0.12112796347333503,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 27.839847059661828,
+    "monthly_inflow": 9624.417074177689,
+    "monthly_outflow": 7514.582525903314,
+    "paycheck_regularity": 0.5647308205320792,
+    "bill_payment_consistency": 0.6473664486747177,
+    "nsf_count": 0,
+    "overdraft_days": 2,
+    "rent_payment_score": 0.7373918916663775,
+    "utility_payment_score": 0.57612606732088,
+    "banking_tenure_months": 7.337596316536775,
+    "avg_account_balance": 16479.779006252433,
+    "savings_rate": 0.12517957635051988
+   },
+   "credit_score": 906,
+   "default_probability": 0.094,
+   "decision": "Approved",
+   "warnings": []
+  },
+  {
+   "name": "audit 1",
+   "status": 200,
+   "applicant": {
+    "annual_income": 61156.00051969563,
+    "loan_amount": 11533.432565794761,
+    "loan_term_months": 48,
+    "debt_to_income": 0.2494179442231153,
+    "employment_years": 15.706856855031239,
+    "fico_score": 622,
+    "credit_utilization": 0.2605809093891272,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 47.66802628543259,
+    "monthly_inflow": 4651.028392136833,
+    "monthly_outflow": 3513.7791639441143,
+    "paycheck_regularity": 0.7810401564890475,
+    "bill_payment_consistency": 0.7694436093453572,
+    "nsf_count": 1,
+    "overdraft_days": 1,
+    "rent_payment_score": 0.9438687228150534,
+    "utility_payment_score": 0.9032396662006923,
+    "banking_tenure_months": 10.510501280830299,
+    "avg_account_balance": 11203.658004878422,
+    "savings_rate": 0.030734538194152144
+   },
+   "credit_score": 931,
+   "default_probability": 0.0688,
+   "decision": "Approved",
+   "warnings": []
+  },
+  {
+   "name": "audit 2",
+   "status": 200,
+   "applicant": {
+    "annual_income": 224698.20769855502,
+    "loan_amount": 9780.769823591767,
+    "loan_term_months": 48,
+    "debt_to_income": 0.2580588688545231,
+    "employment_years": 5.027565362495295,
+    "fico_score": 745,
+    "credit_utilization": 0.7136626063871809,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 4,
+    "credit_age_months": 9.511732204107346,
+    "monthly_inflow": 16726.015270213687,
+    "monthly_outflow": 15195.556091442466,
+    "paycheck_regularity": 0.6414038147216631,
+    "bill_payment_consistency": 0.49217657594596453,
+    "nsf_count": 0,
+    "overdraft_days": 2,
+    "rent_payment_score": 0.7156066935430305,
+    "utility_payment_score": 0.7272407535106146,
+    "banking_tenure_months": 6.321199466008563,
+    "avg_account_balance": 24925.53132797522,
+    "savings_rate": 0.03542439310358423
+   },
+   "credit_score": 920,
+   "default_probability": 0.0801,
+   "decision": "Approved",
+   "warnings": []
+  },
+  {
+   "name": "audit 3",
+   "status": 200,
+   "applicant": {
+    "annual_income": 79118.09619796141,
+    "loan_amount": 9117.348594585279,
+    "loan_term_months": 36,
+    "debt_to_income": 0.0717870803194325,
+    "employment_years": 20.0,
+    "fico_score": 636,
+    "credit_utilization": 0.5862091961053914,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 81.3948036526232,
+    "monthly_inflow": 5435.894452892494,
+    "monthly_outflow": 4148.3791922709215,
+    "paycheck_regularity": 0.3410985742616852,
+    "bill_payment_consistency": 0.9543362054649122,
+    "nsf_count": 0,
+    "overdraft_days": 3,
+    "rent_payment_score": 0.4589115426685027,
+    "utility_payment_score": 0.9696464761176458,
+    "banking_tenure_months": 22.48649671274973,
+    "avg_account_balance": 3648.485408887125,
+    "savings_rate": 0.19777518238930605
+   },
+   "credit_score": 942,
+   "default_probability": 0.0577,
+   "decision": "Approved",
+   "warnings": []
+  },
+  {
+   "name": "audit 4",
+   "status": 200,
+   "applicant": {
+    "annual_income": 101979.00486628269,
+    "loan_amount": 4687.203279468854,
+    "loan_term_months": 36,
+    "debt_to_income": 0.132476135680269,
+    "employment_years": 2.2761813500531334,
+    "fico_score": 579,
+    "credit_utilization": 0.39753805064657616,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 149.81941211641225,
+    "monthly_inflow": 10062.650881658328,
+    "monthly_outflow": 7633.99247840554,
+    "paycheck_regularity": 0.49492017446026004,
+    "bill_payment_consistency": 0.954098494908865,
+    "nsf_count": 1,
+    "overdraft_days": 1,
+    "rent_payment_score": 0.8040999097453724,
+    "utility_payment_score": 0.6291267947479942,
+    "banking_tenure_months": 32.18091019260978,
+    "avg_account_balance": 11562.21464290281,
+    "savings_rate": 0.07189055506117123
+   },
+   "credit_score": 879,
+   "default_probability": 0.1209,
+   "decision": "Approved",
+   "warnings": []
+  },
+  {
+   "name": "audit 5",
+   "status": 200,
+   "applicant": {
+    "annual_income": 41532.250589034345,
+    "loan_amount": 11129.865496362327,
+    "loan_term_months": 36,
+    "debt_to_income": 0.36302541606711036,
+    "employment_years": 11.565797990609035,
+    "fico_score": 712,
+    "credit_utilization": 0.338163184185816,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 46.233516073770794,
+    "monthly_inflow": 3882.484314432264,
+    "monthly_outflow": 3286.6656461083912,
+    "paycheck_regularity": 0.44784394473264283,
+    "bill_payment_consistency": 0.8579287891699203,
+    "nsf_count": 1,
+    "overdraft_days": 2,
+    "rent_payment_score": 0.8471805387475567,
+    "utility_payment_score": 0.9458953630784857,
+    "banking_tenure_months": 6.653642472427556,
+    "avg_account_balance": 3779.5144293685116,
+    "savings_rate": 0.12750363565736253
+   },
+   "credit_score": 963,
+   "default_probability": 0.0366,
+   "decision": "Approved",
+   "warnings": []
+  },
+  {
+   "name": "outside the central 99%",
+   "status": 200,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 400,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 6250,
+    "monthly_outflow": 4800,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 5,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8500,
+    "savings_rate": 0.1
+   },
+   "credit_score": 67,
+   "default_probability": 0.9331,
+   "decision": "Denied",
+   "warnings": [
+    "fico_score 400 is below 475, outside the central 99% of the training data: few training applicants look like this, so treat the score as less certain",
+    "nsf_count 5 is above 3, outside the central 99% of the training data: few training applicants look like this, so treat the score as less certain"
+   ]
+  },
+  {
+   "name": "inflow past the training data",
+   "status": 200,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 7625,
+    "monthly_outflow": 5800,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8500,
+    "savings_rate": 0.1
+   },
+   "credit_score": 994,
+   "default_probability": 0.0064,
+   "decision": "Approved",
+   "warnings": [
+    "monthly_inflow / (annual_income / 12) is 1.220, above 1.198, outside the central 99% of the training data: treat the score as less certain"
+   ]
+  },
+  {
+   "name": "tight net cash flow",
+   "status": 200,
+   "applicant": {
+    "annual_income": 15000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 1250,
+    "monthly_outflow": 1170,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 1700,
+    "savings_rate": 0.1
+   },
+   "credit_score": 984,
+   "default_probability": 0.0165,
+   "decision": "Approved",
+   "warnings": [
+    "monthly_net_cashflow 80 is below 97, outside the central 99% of the training data: few training applicants look like this, so treat the score as less certain"
+   ]
+  },
+  {
+   "name": "heavy payment",
+   "status": 200,
+   "applicant": {
+    "annual_income": 15000,
+    "loan_amount": 24000,
+    "loan_term_months": 12,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 1250,
+    "monthly_outflow": 960,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 1700,
+    "savings_rate": 0.1
+   },
+   "credit_score": 777,
+   "default_probability": 0.223,
+   "decision": "Approved",
+   "warnings": [
+    "the monthly loan payment is 1.60x monthly income, above 0.88 (the central 99% of the training data): treat the score as less certain"
+   ]
+  },
+  {
+   "name": "cash flow at its favourable edge",
+   "status": 200,
+   "applicant": {
+    "annual_income": 35000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.55,
+    "employment_years": 1,
+    "fico_score": 580,
+    "credit_utilization": 0.75,
+    "num_delinquencies": 3,
+    "months_since_delinquency": 8,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 3500,
+    "monthly_outflow": 1800,
+    "paycheck_regularity": 0.6,
+    "bill_payment_consistency": 0.55,
+    "nsf_count": 4,
+    "overdraft_days": 10,
+    "rent_payment_score": 0.6,
+    "utility_payment_score": 0.5,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8700,
+    "savings_rate": 0.01
+   },
+   "credit_score": 1,
+   "default_probability": 0.9986,
+   "decision": "Denied",
+   "warnings": [
+    "num_delinquencies 3 is above 2, outside the central 99% of the training data: few training applicants look like this, so treat the score as less certain",
+    "nsf_count 4 is above 3, outside the central 99% of the training data: few training applicants look like this, so treat the score as less certain",
+    "overdraft_days 10 is above 6, outside the central 99% of the training data: few training applicants look like this, so treat the score as less certain",
+    "monthly_inflow / (annual_income / 12) is 1.200, above 1.198, outside the central 99% of the training data: treat the score as less certain",
+    "inflow, outflow, balance are each in the most favourable tenth of the training data at once: these figures are self-reported and stated cash flow can be written to pass, so verify them independently before relying on this score"
+   ]
+  },
+  {
+   "name": "inflow does not match income",
+   "status": 422,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 12000,
+    "monthly_outflow": 9000,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8500,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "spending beyond inflow",
+   "status": 422,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 6250,
+    "monthly_outflow": 7400,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8500,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "almost no spending",
+   "status": 422,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 6250,
+    "monthly_outflow": 410,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8500,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "balance far above income",
+   "status": 422,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 6250,
+    "monthly_outflow": 4800,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 170000,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "balance far below income",
+   "status": 422,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 6250,
+    "monthly_outflow": 4800,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 500,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "payment beyond income",
+   "status": 422,
+   "applicant": {
+    "annual_income": 12000,
+    "loan_amount": 49000,
+    "loan_term_months": 9,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 1000,
+    "monthly_outflow": 800,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 1500,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "net cash flow beyond its range",
+   "status": 422,
+   "applicant": {
+    "annual_income": 600000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 61000,
+    "monthly_outflow": 30000,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 60000,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "balance under its floor at low income",
+   "status": 422,
+   "applicant": {
+    "annual_income": 15000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 1250,
+    "monthly_outflow": 960,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 465,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "FICO under its floor",
+   "status": 422,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 349,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 6250,
+    "monthly_outflow": 4800,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8500,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "delinquencies over their ceiling",
+   "status": 422,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 6,
+    "months_since_delinquency": 8,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 6250,
+    "monthly_outflow": 4800,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8500,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "recency without a delinquency",
+   "status": 422,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": 8,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 6250,
+    "monthly_outflow": 4800,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8500,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "a delinquency without a recency",
+   "status": 422,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 1,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 6250,
+    "monthly_outflow": 4800,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 0,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8500,
+    "savings_rate": 0.1
+   }
+  },
+  {
+   "name": "a fractional count",
+   "status": 422,
+   "applicant": {
+    "annual_income": 75000,
+    "loan_amount": 12000,
+    "loan_term_months": 36,
+    "debt_to_income": 0.32,
+    "employment_years": 4,
+    "fico_score": 720,
+    "credit_utilization": 0.25,
+    "num_delinquencies": 0,
+    "months_since_delinquency": -1,
+    "num_hard_inquiries": 1,
+    "credit_age_months": 84,
+    "monthly_inflow": 6250,
+    "monthly_outflow": 4800,
+    "paycheck_regularity": 0.92,
+    "bill_payment_consistency": 0.88,
+    "nsf_count": 1.5,
+    "overdraft_days": 0,
+    "rent_payment_score": 0.95,
+    "utility_payment_score": 0.85,
+    "banking_tenure_months": 48,
+    "avg_account_balance": 8500,
+    "savings_rate": 0.1
+   }
+  }
+ ],
+ "score_bands": [
+  {
+   "label": "Very low",
+   "min_score": 950,
+   "max_score": 1000,
+   "n": 870,
+   "share": 0.435,
+   "observed_default_rate": 0.0207
+  },
+  {
+   "label": "Low",
+   "min_score": 850,
+   "max_score": 949,
+   "n": 547,
+   "share": 0.2735,
+   "observed_default_rate": 0.1024
+  },
+  {
+   "label": "Elevated",
+   "min_score": 600,
+   "max_score": 849,
+   "n": 358,
+   "share": 0.179,
+   "observed_default_rate": 0.2598
+  },
+  {
+   "label": "High",
+   "min_score": 450,
+   "max_score": 599,
+   "n": 82,
+   "share": 0.041,
+   "observed_default_rate": 0.4146
+  },
+  {
+   "label": "Very high",
+   "min_score": 0,
+   "max_score": 449,
+   "n": 143,
+   "share": 0.0715,
+   "observed_default_rate": 0.7063
+  }
+ ],
+ "fairness": {
+  "verdict": "INCONCLUSIVE",
+  "checks": {
+   "demographic_parity": {
+    "value": 0.0182,
+    "ciLow": 0.0,
+    "ciHigh": 0.0778,
+    "verdict": "PASS"
+   },
+   "equal_opportunity": {
+    "value": 0.0058,
+    "ciLow": 0.0,
+    "ciHigh": 0.0487,
+    "verdict": "PASS"
+   },
+   "equalized_odds": {
+    "value": 0.0773,
+    "ciLow": 0.0,
+    "ciHigh": 0.2953,
+    "verdict": "INCONCLUSIVE"
+   },
+   "disparate_impact": {
+    "value": 0.9798,
+    "ciLow": 0.9149,
+    "ciHigh": 1.0,
+    "verdict": "PASS"
+   }
+  },
+  "groupMetrics": [
+   {
+    "group": "A",
+    "nSamples": 1234,
+    "nDefaulted": 184,
+    "approvalRate": 0.8849,
+    "approvalRateRepaid": 0.9467,
+    "defaultRate": 0.1491,
+    "avgScore": 849.1,
+    "meanPredicted": 0.1509,
+    "calibrationGap": -0.0018,
+    "calibrationLow": -0.0221,
+    "calibrationHigh": 0.0185
+   },
+   {
+    "group": "B",
+    "nSamples": 491,
+    "nDefaulted": 69,
+    "approvalRate": 0.8982,
+    "approvalRateRepaid": 0.9455,
+    "defaultRate": 0.1405,
+    "avgScore": 853.4,
+    "meanPredicted": 0.1466,
+    "calibrationGap": -0.006,
+    "calibrationLow": -0.0387,
+    "calibrationHigh": 0.0267
+   },
+   {
+    "group": "C",
+    "nSamples": 275,
+    "nDefaulted": 49,
+    "approvalRate": 0.88,
+    "approvalRateRepaid": 0.9513,
+    "defaultRate": 0.1782,
+    "avgScore": 862.7,
+    "meanPredicted": 0.1373,
+    "calibrationGap": 0.0408,
+    "calibrationLow": -0.0061,
+    "calibrationHigh": 0.0878
+   }
+  ],
+  "population": {
+   "nSamples": 400000,
+   "verdict": "INCONCLUSIVE",
+   "equalizedOdds": {
+    "value": 0.1103,
+    "ciLow": 0.0911,
+    "ciHigh": 0.1292,
+    "verdict": "INCONCLUSIVE"
+   },
+   "mostMispredicted": {
+    "group": "C",
+    "defaultRate": 0.2132,
+    "meanPredicted": 0.1451,
+    "gap": 0.0681,
+    "ciLow": 0.0648,
+    "ciHigh": 0.0715
+   }
+  }
+ }
+}
