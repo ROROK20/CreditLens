@@ -307,8 +307,8 @@ try {
   // recorded model and scores this applicant the same, so this alone does not prove
   // the engine answered: the "Live engine" badge above and the chart check below (live
   // Shapley values, where the no-backend page draws log-odds) do.
-  // exact:true is load-bearing for non-vacuity — ScoreGauge renders the number
-  // as its OWN text node (`text-5xl … {score}`), and a bare integer would else
+  // exact:true is load-bearing for non-vacuity — DecisionBand renders the number
+  // as its OWN text node (`score-value`), and a bare integer would else
   // substring-match unrelated page figures (e.g. avg_account_balance 8500 ⊃
   // "500"), so a tampered EXPECT_SCORE would falsely pass. With exact:true the
   // tamper makes THIS check fail too, not just the API one.
@@ -364,8 +364,8 @@ try {
       signal: AbortSignal.timeout(15000),
     });
     if (res.status !== 422) throw new Error(`interest_rate accepted: HTTP ${res.status}`);
-    const card = page.locator("div.bg-panel").filter({ hasText: "Feature Contributions" }).first();
-    const labels = await card.locator("div.w-44").allInnerTexts();
+    const card = page.getByTestId("contributions");
+    const labels = await card.getByTestId("contribution-label").allInnerTexts();
     if (labels.some((l) => l.includes("Interest Rate"))) throw new Error("Interest Rate charted as a factor");
   });
 
@@ -393,10 +393,10 @@ try {
     });
     const ex = await res.json();
     const ranked = Object.values(ex.shap_values).sort((a, b) => Math.abs(b) - Math.abs(a));
-    const card = page.locator("div.bg-panel").filter({ hasText: "Feature Contributions" }).first();
+    const card = page.getByTestId("contributions");
     await card.getByTestId("chart-total").waitFor({ timeout: 15000 });
-    const labels = (await card.locator("div.w-44").allInnerTexts()).map((t) => t.trim());
-    const shown = (await card.locator("div.w-16.text-right").allInnerTexts()).map((t) =>
+    const labels = (await card.getByTestId("contribution-label").allInnerTexts()).map((t) => t.trim());
+    const shown = (await card.getByTestId("contribution-value").allInnerTexts()).map((t) =>
       parseFloat(t.trim().replace("−", "-")),
     );
     if (labels.length !== 9 || labels[8] !== "All other factors")

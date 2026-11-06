@@ -1,9 +1,9 @@
 {
-  "captured": "2026-11-04",
-  "capture_id": "f787cd7aef090a8f",
+  "captured": "2026-11-05",
+  "capture_id": "9711e99f28c8089e",
   "screenshot": {
     "path": "docs/screenshot.png",
-    "sha256": "d91d01c12652c50fa1d0e78f00001925df508f778fe386214e1f0c9d17712776",
+    "sha256": "ba26531ea4b0b6dcf130a0fb4499e540f1f2e1b677d904c1d88bad53226fffa8",
     "state": "live engine",
     "shows": {
       "credit_score": 993,
@@ -15,7 +15,7 @@
   },
   "og": {
     "path": "frontend/public/og.png",
-    "sha256": "282e702ca6ca94d66b1d9dada90eb55c46e8968eb24a1c5fbf91a5902f1a1a29",
+    "sha256": "d02a45ce512333fc99a2ec1c7ca4135ad83ec5291c1b8ffc1d318cc14adda921",
     "state": "no backend",
     "shows": {
       "credit_score": 993,

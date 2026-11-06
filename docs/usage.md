@@ -268,7 +268,7 @@ npm run dev
 # Open http://localhost:3003
 ```
 
-The demo offers an interactive applicant form, an animated score gauge, a
+The demo offers an interactive applicant form, a score rail marking the 450 and 600 cutoffs, a
 SHAP-style contribution waterfall, and a fairness dashboard with three preset
 profiles (Strong / Median Applicant / Weak).
 

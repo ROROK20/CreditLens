@@ -226,8 +226,8 @@ CORS is open by default to support the local frontend demo.
 ### `frontend/` — Next.js Web Demo
 A Next.js 15 + TypeScript app (Tailwind, lucide-react) that provides an
 interactive scoring playground: a 22-field applicant form (every input the model
-uses; the delinquency-recency field appears once delinquencies > 0), an animated 0–1000
-score gauge, a SHAP-style contribution waterfall, and a four-gate fairness
+uses; the delinquency-recency field appears once delinquencies > 0), a 0–1000
+score rail marking the 450 and 600 cutoffs, a SHAP-style contribution waterfall, and a four-gate fairness
 dashboard. It calls the real engine first (`/health`, `POST /score`,
 `POST /explain`, `GET /fairness/report`) and renders a **"Live engine"** badge
 when the backend answers. Under that badge the score, probability, decision,

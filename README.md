@@ -21,7 +21,7 @@ Synthetic data, demo only, not financial advice. CreditLens has never seen a rea
 <p align="center">
   <img src="docs/screenshot.png" alt="CreditLens — explainable credit scoring with a SHAP feature-contribution chart and a model-wide fairness audit" width="100%">
   <br>
-  <em>Captured 2026-11-04 from a production build against the real engine: the "Live engine" and "Live audit" badges mean every number came from the Python pipeline, and the audit reads <strong>INCONCLUSIVE</strong> (see <a href="#what-the-demo-reports-and-why">what the demo reports</a>). The social-preview image is captured from a build with no backend, what a frontend-only deploy shows.</em>
+  <em>Captured 2026-11-05 from a production build against the real engine: the "Live engine" and "Live audit" badges mean every number came from the Python pipeline, and the audit reads <strong>INCONCLUSIVE</strong> (see <a href="#what-the-demo-reports-and-why">what the demo reports</a>). The social-preview image is captured from a build with no backend, what a frontend-only deploy shows.</em>
 </p>
 
 ---
@@ -585,7 +585,7 @@ How to read it:
 ## Web Demo / Frontend
 
 An interactive Next.js 15 web demo lives in [`frontend/`](frontend). It provides
-a live applicant-scoring playground with an animated 0–1000 score gauge, a
+a live applicant-scoring playground with a 0–1000 score rail marking the 450 and 600 cutoffs, a
 SHAP-style contribution waterfall, top positive/negative factor lists, and a
 model-wide fairness dashboard — including three preset profiles (Strong /
 Median Applicant / Weak).

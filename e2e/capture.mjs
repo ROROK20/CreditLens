@@ -117,7 +117,7 @@ function embedRecord(path, record) {
 async function rendered(page) {
   return {
     credit_score: Number((await page.getByTestId("score-value").innerText()).trim()),
-    decision: (await page.getByTestId("score-decision").innerText()).trim(),
+    decision: (await page.getByTestId("score-decision").innerText()).trim().toUpperCase(),
     default_probability: (await page.getByTestId("default-probability").innerText()).trim(),
     risk_band: (await page.getByTestId("risk-band").innerText()).trim(),
     fairness_verdict: VERDICT_FROM_LABEL[(await page.getByTestId("fairness-verdict").innerText()).trim()],
@@ -136,7 +136,7 @@ async function take(browser, { viewport, badge, audit, expected, path, fullPage 
   await page.getByText(audit, { exact: true }).waitFor({ timeout: 60000 });
   await page.getByTestId("score-value").getByText(String(expected.credit_score), { exact: true }).waitFor({ timeout: 60000 });
   await page.getByTestId("fairness-verdict").waitFor({ timeout: 60000 });
-  await page.waitForTimeout(1500); // the gauge settles
+  await page.waitForTimeout(1500); // the score rail settles
   const before = await rendered(page);
   await page.screenshot({ path: join(ROOT, path), fullPage });
   const after = await rendered(page);

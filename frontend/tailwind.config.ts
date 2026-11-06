@@ -8,18 +8,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "#0a0e1a",
-        panel: "#0f1525",
-        border: "#1c2540",
-        accent: {
-          green: "#10b981",
-          red: "#ef4444",
-          blue: "#3b82f6",
-          purple: "#a855f7",
-        },
+        paper: "var(--paper)",
+        wash: "var(--wash)",
+        ink: "var(--ink)",
+        "ink-2": "var(--ink-2)",
+        "ink-3": "var(--ink-3)",
+        rule: "var(--rule)",
+        "rule-strong": "var(--rule-strong)",
+        approved: "var(--approved)",
+        review: "var(--review)",
+        denied: "var(--denied)",
+        "band-ink": "var(--band-ink)",
+        "band-ink-2": "var(--band-ink-2)",
+        lowers: "var(--lowers)",
+        raises: "var(--raises)",
+        caution: "var(--caution)",
+        "caution-wash": "var(--caution-wash)",
       },
       fontFamily: {
-        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+        sans: ["var(--font-franklin)", "Franklin Gothic Medium", "Arial", "sans-serif"],
+      },
+      transitionTimingFunction: {
+        "out-quart": "cubic-bezier(0.25, 1, 0.5, 1)",
       },
     },
   },

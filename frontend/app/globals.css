@@ -2,45 +2,151 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Check paper. Surfaces lean toward the same green as the approved band, so a
+ * decision reads as part of the document rather than a widget placed on it.
+ */
 :root {
-  --bg: #0a0e1a;
+  --paper: oklch(0.968 0.014 155);
+  --wash: oklch(0.925 0.028 155);
+  --ink: oklch(0.25 0.022 160);
+  --ink-2: oklch(0.4 0.02 160);
+  --ink-3: oklch(0.48 0.02 160);
+  --rule: oklch(0.85 0.022 155);
+  --rule-strong: oklch(0.62 0.03 158);
+
+  /* The decision: deep inks, none of them an alarm. */
+  --approved: oklch(0.345 0.07 160);
+  --review: oklch(0.4 0.075 78);
+  --denied: oklch(0.36 0.095 30);
+  --band-ink: oklch(0.975 0.012 155);
+  --band-ink-2: oklch(0.88 0.028 155);
+
+  /* Direction of a factor, and anything that needs a second look. */
+  --lowers: oklch(0.44 0.1 160);
+  --raises: oklch(0.5 0.135 38);
+  --caution: oklch(0.42 0.095 78);
+  --caution-wash: oklch(0.945 0.04 90);
 }
 
 * {
-  border-color: rgb(28 37 64);
+  border-color: var(--rule);
+}
+
+html {
+  background: var(--paper);
+  color-scheme: light;
 }
 
 body {
-  background: linear-gradient(135deg, #0a0e1a 0%, #0d1424 100%);
-  color: #e5e7eb;
+  background: var(--paper);
+  color: var(--ink);
   min-height: 100vh;
-  font-feature-settings: "cv11", "ss01";
+  font-variant-numeric: lining-nums;
 }
 
-.glow {
-  box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.3);
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
-.metric-card {
-  background: linear-gradient(180deg, #0f1525 0%, #0a0f1f 100%);
-  border: 1px solid rgb(28 37 64);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  transition: border-color 0.2s ease;
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
-.metric-card:hover {
-  border-color: rgb(59 130 246 / 0.5);
+/* A form's part marker: reversed block, then the title beside it. */
+.part-tag {
+  display: inline-block;
+  flex: none;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  padding: 0 0.4375rem;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+.line-no {
+  display: inline-block;
+  width: 1.75rem;
+  color: var(--ink-3);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
 }
-::-webkit-scrollbar-track {
-  background: #0a0e1a;
+
+/* A rubber stamp, not a pill: square corners, one line, its own colour. */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  padding: 0.0625rem 0.4375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  white-space: nowrap;
 }
-::-webkit-scrollbar-thumb {
-  background: #1c2540;
-  border-radius: 3px;
+
+.fader {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 1.5rem;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.fader::-webkit-slider-runnable-track {
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--ink) var(--fill, 0%),
+    var(--rule-strong) var(--fill, 0%)
+  );
+}
+.fader::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0.625rem;
+  height: 1.375rem;
+  margin-top: -0.59rem;
+  border-radius: 1px;
+  background: var(--ink);
+  border: 2px solid var(--paper);
+  box-sizing: content-box;
+  background-clip: padding-box;
+}
+.fader::-moz-range-track {
+  height: 3px;
+  background: var(--rule-strong);
+}
+.fader::-moz-range-progress {
+  height: 3px;
+  background: var(--ink);
+}
+.fader::-moz-range-thumb {
+  width: 0.625rem;
+  height: 1.375rem;
+  border-radius: 1px;
+  background: var(--ink);
+  border: 2px solid var(--paper);
+}
+
+/* The score rail's three zones, drawn in the band's own ink. */
+.rail-zone-low {
+  background: color-mix(in oklch, var(--band-ink) 22%, transparent);
+}
+.rail-zone-mid {
+  background: color-mix(in oklch, var(--band-ink) 42%, transparent);
+}
+.rail-zone-high {
+  background: color-mix(in oklch, var(--band-ink) 70%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+import { Libre_Franklin } from "next/font/google";
 import "./globals.css";
 import { resolveSiteUrl } from "@/lib/siteUrl.mjs";
+
+// Self-hosted at build time: the page makes no call to a font service.
+const franklin = Libre_Franklin({ subsets: ["latin"], variable: "--font-franklin", display: "swap" });
 
 // Absolute og / twitter URLs need the site's public origin. Without
 // NEXT_PUBLIC_SITE_URL a production build ships no preview image and no og:url
@@ -18,7 +22,7 @@ const description =
 export const metadata: Metadata = {
   ...(SITE_URL ? { metadataBase: new URL(SITE_URL) } : {}),
   title: {
-    default: "CreditLens — Explainable Credit Scoring",
+    default: "CreditLens: Explainable Credit Scoring",
     template: "%s · CreditLens",
   },
   description,
@@ -38,14 +42,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "CreditLens",
-    title: "CreditLens — Explainable Credit Scoring",
+    title: "CreditLens: Explainable Credit Scoring",
     description,
     ...(SITE_URL ? { url: "/" } : {}),
     images: OG_IMAGES,
   },
   twitter: {
     card: SITE_URL ? "summary_large_image" : "summary",
-    title: "CreditLens — Explainable Credit Scoring",
+    title: "CreditLens: Explainable Credit Scoring",
     description,
     images: OG_IMAGES.map((image) => image.url),
   },
@@ -53,8 +57,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="font-mono antialiased">{children}</body>
+    <html lang="en" className={franklin.variable}>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }
